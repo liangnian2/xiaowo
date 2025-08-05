@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 基础主题变量 - 由useTheme hook控制实际值 */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* 主题颜色变量 - 实际值由JavaScript动态设置 */
+  --color-primary-light: #ec4899;
+  --color-primary-dark: #f472b6;
+  --color-secondary-light: #8b5cf6;
+  --color-secondary-dark: #a78bfa;
+  --color-accent-light: #f97316;
+  --color-accent-dark: #fb923c;
+  --color-background-light: #fff8f9;
+  --color-background-dark: #1e1b4b;
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #312e81;
+  --color-text-primary-light: #1e293b;
+  --color-text-primary-dark: #f8fafc;
+  --color-text-secondary-light: #64748b;
+  --color-text-secondary-dark: #cbd5e1;
+  --color-border-light: #fecdd3;
+  --color-border-dark: #4f46e5;
+}
+
+/* 自定义动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-pulse-soft {
+  animation: pulseSoft 2s ease-in-out infinite;
+}
+
+/* 心形动画 */
+.heart {
+  animation: float 3s ease-in-out infinite;
+}
+
+.heart:nth-child(2n) {
+  animation-delay: 1s;
+}
+
+.heart:nth-child(3n) {
+  animation-delay: 2s;
+}
+
+ /* 名字动画效果 */
+ @keyframes nameFloat {
+   0%, 100% { transform: translateY(0); }
+   50% { transform: translateY(-5px); }
+ }
+ 
+ .animate-name-float {
+   animation: nameFloat 4s ease-in-out infinite;
+ }
+ 
+ .name-highlight {
+   position: relative;
+   display: inline-block;
+ }
+ 
+ .name-highlight::after {
+   content: '';
+   position: absolute;
+   bottom: -2px;
+   left: 0;
+   width: 100%;
+   height: 3px;
+   background: linear-gradient(90deg, transparent, #ff6b8b, transparent);
+   transform: scaleX(0);
+   transform-origin: center;
+   transition: transform 0.5s ease;
+ }
+ 
+ .name-highlight:hover::after {
+   transform: scaleX(1);
+ }
+ 
+ /* 自定义滚动条 - 根据主题自动适配 */
+.light ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #ffccd5;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #ffb3c0;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #333344;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+/* 统一过渡效果 - 增强版 */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  scroll-behavior: smooth;
+}
